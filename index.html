@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Paletty Amazon, Zwroty Konsumenckie i Mix Paletty Hurt | Kategoria A, B, C</title>
+  <meta name="description"
+    content="Bezpośredni importer palet Amazon w Polsce. Zwроty konsumenckie (kategoria A/B/C), mix palety, elektronika, dom i ogród, Mystery Box. Hurt i detal. Nowe dostawy co tydzień!">
+  <meta name="keywords"
+    content="palety amazon, zwroty konsumenckie, likwidacje amazon, nadwyżki magazynowe, hurtownia palet amazon, mystery box amazon, kategoria A B C, palety mix">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/css/intlTelInput.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --card: #1e1e1e;
+      --border: #2e2e2e;
+      --accent: #e8ff00;
+      --accent2: #ff6b35;
+      --text: #f0f0f0;
+      --muted: #aaaaaa;
+      --green: #00e676;
+      --container-max: 1140px;
+      --side-pad: 40px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-left: var(--side-pad);
+      padding-right: var(--side-pad);
+      width: 100%;
+    }
+
+    /* NAV */
+    nav {
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(13, 13, 13, 0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      z-index: 3100;
+      position: relative;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px !important;
+    }
+
+    .nav-right-block {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-info-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 5px;
+    }
+
+    .contact-info-mini a {
+      font-size: 10px;
+      color: #fff;
+      white-space: nowrap;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info-mini a:hover {
+      color: var(--accent);
+    }
+
+    .contact-info-mini a span {
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    .lang-switcher-wrap {
+      display: flex;
+      gap: 5px;
+    }
+
+    .lang-switcher-wrap .lang-btn {
+      background: #222;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+
+    .lang-switcher-wrap .lang-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .lang-switcher-wrap .lang-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 3100;
+      position: relative;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease-in-out;
+      border-radius: 2px;
+    }
+
+    .navbar.nav-hidden {
+      transform: translateY(-100%);
+    }
+
+    .mobile-menu-footer {
+      display: none;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(34px, 5.5vw, 72px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+      max-width: 800px;
+    }
+
+    .hero h1 .hl {
+      color: var(--accent);
+    }
+
+    .amazon-hero-arrow {
+      display: block;
+      line-height: 0;
+      margin: -4px 0 10px 0;
+    }
+
+    .amazon-hero-arrow svg {
+      width: 160px !important;
+      height: 20px !important;
+      display: block !important;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      max-width: 600px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      min-width: 180px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* STATS */
+    .stats-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .stats-strip .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 24px var(--side-pad);
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(20px, 3.5vw, 26px);
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* TICKER */
+    .proof-bar {
+      background: #111;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .proof-inner {
+      display: flex;
+      width: max-content;
+      animation: ticker 15s linear infinite;
+    }
+
+    /* TICKER */
+    .proof-bar {
+      background: #111;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .proof-inner {
+      display: flex;
+      width: max-content;
+      animation: ticker 15s linear infinite;
+    }
+
+    .proof-track {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding-right: 60px;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .proof-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .proof-item .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.7);
+      }
+    }
+
+
+
+
+    /* SECTION */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 60px;
+      line-height: 1.1;
+    }
+
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .product-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #000;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .product-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    .amazon-logo-overlay {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+    }
+
+    .amazon-logo-overlay svg {
+      width: 72px;
+      height: 22px;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--accent);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      z-index: 10;
+    }
+
+    .product-body {
+      padding: 18px 20px 20px;
+    }
+
+    .product-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      min-height: 60px;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .product-tags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .ptag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .ptag-a {
+      background: #00e67618;
+      color: var(--green);
+      border: 1px solid #00e67640;
+    }
+
+    .ptag-b {
+      background: #ff6b3518;
+      color: var(--accent2);
+      border: 1px solid #ff6b3540;
+    }
+
+    .ptag-c {
+      background: #88888818;
+      color: #aaa;
+      border: 1px solid #88888840;
+    }
+
+    /* STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .step {
+      background: var(--card);
+      padding: 28px 24px;
+    }
+
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step-body {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* CONTACT & FORM */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .phone-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .phone-lang {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .phone-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .phone-num:hover {
+      color: var(--accent);
+    }
+
+    .discount-box {
+      background: #e8ff0010;
+      border: 1px solid #e8ff0030;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+    }
+
+    .discount-box strong {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .native-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    .native-form h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .native-form input,
+    .native-form select,
+    .native-form textarea {
+      width: 100%;
+      padding: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    /* INTL-TEL-INPUT CUSTOM DARK THEME */
+    .iti {
+      width: 100%;
+    }
+
+    .iti__country-list {
+      background-color: var(--card) !important;
+      border: 1px solid var(--border) !important;
+      color: #fff !important;
+    }
+
+    .iti__country:hover,
+    .iti__country.iti__highlight {
+      background-color: var(--border) !important;
+    }
+
+    .iti__search-input {
+      background-color: var(--bg) !important;
+      color: #fff !important;
+      border: 1px solid var(--border) !important;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      background: var(--surface);
+    }
+
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* 📱 MOBILE RESPONSIVE */
+    @media(max-width: 900px) {
+      :root {
+        --side-pad: 20px;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      nav .container {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      /* Прячем контакты и языки из шапки, оставляем только бургер */
+      .nav-right-block {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      /* Fullscreen Centered Burger Menu */
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Заменили 100vw на 100%, чтобы не было сдвига */
+        width: 100%;
+        /* Заменили 100vw на 100% */
+        height: 100vh;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s;
+        z-index: 2000;
+        padding: 0;
+        /* Жестко обнулили паддинги, которые толкали блок */
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-links a {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--text);
+        font-family: 'Syne', sans-serif;
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      .nav-links a.nav-cta {
+        color: var(--muted) !important;
+        background: transparent !important;
+        padding: 0;
+        font-size: 28px !important;
+        opacity: 0.5;
+        font-weight: 400 !important;
+      }
+
+
+      /* Показываем подвал меню с языками и телефонами */
+      .mobile-menu-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        margin-top: auto;
+        width: 100%;
+        padding-bottom: 40px;
+      }
+
+      .mobile-langs {
+        display: flex;
+        gap: 15px;
+      }
+
+      .mobile-langs .lang-btn {
+        background: #222;
+        border: 1px solid var(--border);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .mobile-langs .lang-btn.active {
+        background: var(--accent);
+        color: #000;
+        border-color: var(--accent);
+      }
+
+      .mobile-phones {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .mobile-phones a {
+        font-family: 'DM Mono', monospace;
+        color: var(--muted);
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: normal;
+      }
+
+      .mobile-phones span {
+        color: var(--accent);
+        font-weight: 700;
+        margin-right: 8px;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background: var(--accent);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background: var(--accent);
+      }
+
+      .hero {
+        padding: 120px 0 40px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero-btns .btn-primary,
+      .hero-btns .btn-secondary {
+        width: 100%;
+        min-width: 0;
+        flex: none;
+      }
+
+      .stats-strip .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-item {
+        border-bottom: 1px solid var(--border);
+        padding: 20px 10px;
+        text-align: center;
+      }
+
+      .stat-item:nth-child(even) {
+        border-right: none;
+      }
+
+      .stat-item:last-child {
+        grid-column: span 2;
+        border-bottom: none;
+        border-right: none;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <div class="container">
+      <div class="logo">AMAZON<span>PALETTY</span></div>
+
+      <div class="nav-right-block">
+        <div class="contact-info-mini">
+          <a href="tel:+48696526921"><span>PL</span>+48 696 526 921</a>
+          <a href="tel:+48793521345"><span>RU</span>+48 793 521 345</a>
+        </div>
+
+        <div class="lang-switcher-wrap">
+          <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+          <button class="lang-btn" onclick="setLang('ru')">RU</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#oferta" class="t-nav" data-ru="ТОВАРЫ" data-en="PRODUCTS" data-pl="OFERTA"
+            onclick="closeMenu()">OFERTA</a></li>
+        <li><a href="#jak" class="t-nav" data-ru="КАК ЭТО РАБОТАЕТ" data-en="HOW IT WORKS" data-pl="JAK TO DZIAŁA"
+            onclick="closeMenu()">JAK TO DZIAŁA</a></li>
+        <li><a href="#kontakt" class="t-nav" data-ru="КОНТАКТ" data-en="CONTACT" data-pl="KONTAKT"
+            onclick="closeMenu()">KONTAKT</a></li>
+        <li><a href="#zamow" class="nav-cta t-nav" data-ru="ЗАКАЗАТЬ" data-en="ORDER" data-pl="ZAMÓW"
+            onclick="closeMenu()">ZAMÓW</a></li>
+
+        <li class="mobile-menu-footer">
+          <div class="mobile-langs">
+            <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+            <button class="lang-btn" onclick="setLang('ru')">RU</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+          </div>
+          <div class="mobile-phones">
+            <a href="tel:+48696526921"><span>PL</span>+48 696 526 921</a>
+            <a href="tel:+48793521345"><span>RU</span>+48 793 521 345</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="hero-eyebrow"><span class="t-txt" data-ru="НОВЫЕ ПОСТАВКИ КАЖДУЮ НЕДЕЛЮ"
+          data-en="NEW DELIVERIES EVERY WEEK" data-pl="NOWE DOSTAWY CO TYDZIEŃ">NOWE DOSTAWY CO TYDZIEŃ</span></div>
+      <h1>
+        <span class="t-txt" data-ru="Паллеты" data-en="Pallets" data-pl="Paletty">Paletty</span><br>
+        <span class="hl">Amazon.</span><br>
+        <span class="amazon-hero-arrow">
+          <svg viewBox="0 0 260 32" fill="none">
+            <path d="M12 16 Q130 40 248 16" stroke="#e8ff00" stroke-width="3.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="t-txt" data-ru="Опт и розница." data-en="Wholesale & Retail." data-pl="Hurt & Detal.">Hurt &
+          Detal.</span>
+      </h1>
+      <p class="hero-sub t-txt"
+        data-pl="Sprzedajemy palety zwrotów Amazon: elektronika, ogród, dom, odzież. Kategorie A, B i C. Dostawy z Niemiec co tydzień. Oferta dla detalistów i hurtowników."
+        data-ru="Продаём паллеты возвратов Amazon: электроника, сад, дом, одежда. Категории A, B и C. Поставки из Германии каждую неделю. Предложение для розницы и опта."
+        data-en="We sell Amazon return pallets: electronics, garden, home, clothing. Categories A, B, and C. Deliveries from Germany every week. Offer for retailers and wholesalers.">
+        Sprzedajemy palety zwrotów Amazon: elektronika, ogród, dom, odzież. Kategorie A, B i C. Dostawy z Niemiec co
+        tydzień. Oferta dla detalistów i hurtowników.
+      </p>
+      <div class="hero-btns">
+        <a href="#zamow" class="btn-primary t-txt" data-ru="Оформить заказ" data-en="Place an order"
+          data-pl="Złóż zamówienie">Złóż zamówienie</a>
+        <a href="#oferta" class="btn-secondary t-txt" data-ru="Посмотреть товары" data-en="View products"
+          data-pl="Zobacz ofertę">Zobacz ofertę</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stat-item">
+        <div class="stat-val">240+</div>
+        <div class="stat-lbl t-txt" data-ru="Паллет на складе" data-en="Pallets in stock" data-pl="Palet w magazynie">
+          Palet w magazynie</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">2 000+</div>
+        <div class="stat-lbl t-txt" data-ru="Продано паллет" data-en="Pallets sold" data-pl="Sprzedanych palet">
+          Sprzedanych palet</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">10%</div>
+        <div class="stat-lbl t-txt" data-ru="Скидка оптовикам" data-en="Wholesale discount" data-pl="Rabat hurtowy">
+          Rabat hurtowy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">7 dni</div>
+        <div class="stat-lbl t-txt" data-ru="Цикл поставки" data-en="Delivery cycle" data-pl="Cykl dostawy">Cykl dostawy
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val" id="live-count">—</div>
+        <div class="stat-lbl t-txt" data-ru="Смотрят сейчас" data-en="Viewing now" data-pl="Ogląda teraz">Ogląda teraz
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-inner" id="proof-ticker"></div>
+    </div>
+  </div>
+
+  <section id="oferta">
+    <div class="container">
+      <div class="section-label t-txt" data-ru="Наши товары" data-en="Our products" data-pl="Nasza oferta">Nasza oferta
+      </div>
+      <h2 class="section-title t-txt" data-ru="Доступные паллеты" data-en="Available pallets" data-pl="Dostępne palety">
+        Dostępne palety</h2>
+
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700" alt="Ogród">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge">Amazon</div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Ogród" data-ru="Сад и Огород" data-en="Garden">Ogród</div>
+            <div class="product-desc t-txt"
+              data-pl="Asortyment ogrodowy z Amazon. Wys. 1,7m. Narzędzia, donice, meble ogrodowe, sprzęt ogrodowy (kosiarki, podlewanie) i więcej."
+              data-ru="Садовый ассортимент с Amazon. Высота 1,7м. Инструменты, горшки, садовая мебель, садовая техника (газонокосилки, полив) и многое другое."
+              data-en="Amazon garden pallet. Height 1.7m. Tools, planters, garden furniture, garden equipment (mowers, irrigation) and more.">
+              Asortyment ogrodowy z Amazon. Wys. 1,7m. Narzędzia, donice, meble ogrodowe, sprzęt ogrodowy (kosiarki,
+              podlewanie) i więcej.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" data-pl="1 000 zł" data-ru="1 000 PLN" data-en="€230">1 000 zł</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span><span
+                  class="ptag ptag-c">C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700" alt="Dom">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge">Amazon</div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Dom — Mix" data-ru="Дом — Микс" data-en="Home — Mix">Dom — Mix
+            </div>
+            <div class="product-desc t-txt"
+              data-pl="Mix produktów domowych z Amazon. Wys. 1m. Meble, dekoracje, oświetlenie, naczynia, tekstylia, AGD."
+              data-ru="Микс товаров для дома с Amazon. Высота 1м. Мебель, декор, освещение, посуда, текстиль, бытовая техника."
+              data-en="Amazon home mix pallet. Height 1m. Furniture, decorations, lighting, cookware, textiles, appliances.">
+              Mix produktów domowych z Amazon. Wys. 1m. Meble, dekoracje, oświetlenie, naczynia, tekstylia, AGD.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" data-pl="1 400 zł" data-ru="1 400 PLN" data-en="€325">1 400 zł</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=700" alt="Elektronika">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge">Amazon</div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Elektronika" data-ru="Электроника" data-en="Electronics">
+              Elektronika</div>
+            <div class="product-desc t-txt"
+              data-pl="Paleta elektroniki z Amazon. Słuchawki, tablety, oświetlenie LED i smart, głośniki, akcesoria i gadżety."
+              data-ru="Паллет электроники с Amazon. Наушники, планшеты, LED и смарт-освещение, колонки, аксессуары и гаджеты."
+              data-en="Amazon electronics pallet. Headphones, tablets, LED and smart lighting, speakers, accessories and gadgets.">
+              Paleta elektroniki z Amazon. Słuchawki, tablety, oświetlenie LED i smart, głośniki, akcesoria i gadżety.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" data-pl="1 800 zł" data-ru="1 800 PLN" data-en="€415">1 800 zł</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span><span
+                  class="ptag ptag-c">C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=80" alt="Inne">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge" style="background:var(--accent2);color:#fff"><span class="t-txt" data-pl="MIX"
+                data-ru="МИКС" data-en="MIX">MIX</span></div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Inne kategorie" data-ru="Другие категории"
+              data-en="Other categories">Inne kategorie</div>
+            <div class="product-desc t-txt"
+              data-pl="Różne kategorie towarów z Amazon. Zabawki, akcesoria dla zwierząt, artykuły sportowe i wiele innych."
+              data-ru="Разные категории товаров с Amazon. Игрушки, зоотовары, спортивный инвентарь и многое другое."
+              data-en="Various product categories from Amazon. Toys, pet supplies, sports equipment and much more.">
+              Różne kategorie towarów z Amazon. Zabawki, akcesoria dla zwierząt, artykuły sportowe i wiele innych.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" style="font-size:15px;color:var(--accent2)" data-pl="Zapytaj o cenę"
+                data-ru="Узнать цену" data-en="Ask for price">Zapytaj o cenę</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span><span
+                  class="ptag ptag-c">C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700" alt="Returns">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge"><span class="t-txt" data-pl="NOWY" data-ru="НОВЫЙ" data-en="NEW">NOWY</span>
+            </div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Zwroty" data-ru="Amazon Возвраты" data-en="Amazon Returns">Zwroty
+            </div>
+            <div class="product-desc t-txt"
+              data-pl="Palety zwrotów z Amazon DE. Mix kategorii. Doskonały stosunek ceny do wartości towaru."
+              data-ru="Паллеты возвратов Amazon DE. Микс категорий. Отличное соотношение цены и стоимости товара."
+              data-en="Amazon DE return pallets. Mixed categories. Excellent price-to-value ratio.">
+              Palety zwrotów z Amazon DE. Mix kategorii. Doskonały stosunek ceny do wartości towaru.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" style="font-size:15px;color:var(--accent2)" data-pl="Zapytaj o cenę"
+                data-ru="Узнать цену" data-en="Ask for price">Zapytaj o cenę</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span><span
+                  class="ptag ptag-c">C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700" alt="Cosmetics">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge"><span class="t-txt" data-pl="NOWY" data-ru="НОВЫЙ" data-en="NEW">NOWY</span>
+            </div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name t-txt" data-pl="Kosmetyki / Chemia" data-ru="Косметика / Химия"
+              data-en="Cosmetics / Cleaning">Kosmetyki / Chemia</div>
+            <div class="product-desc t-txt"
+              data-pl="Paleta kosmetyków i chemii domowej z Amazon. Perfumy, pielęgnacja, makijaż, środki czystości. Kat. A/B."
+              data-ru="Паллет косметики и бытовой химии с Amazon. Парфюм, уход, макияж, средства для уборки. Кат. A/B."
+              data-en="Amazon cosmetics and cleaning products pallet. Perfume, skincare, makeup, cleaning supplies. Cat. A/B.">
+              Paleta kosmetyków i chemii domowej z Amazon. Perfumy, pielęgnacja, makijaż, środki czystości. Kat. A/B.
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" style="font-size:15px;color:var(--accent2)" data-pl="Zapytaj o cenę"
+                data-ru="Узнать цену" data-en="Ask for price">Zapytaj o cenę</div>
+              <div class="product-tags"><span class="ptag ptag-a">A</span><span class="ptag ptag-b">B</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" style="border-color:#9c27b045">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=700" alt="Mystery">
+            <div class="product-img-overlay"></div>
+            <div class="product-badge" style="background:#9c27b0;color:#fff">MYSTERY</div>
+            <div class="amazon-logo-overlay"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name" style="color:#ce93d8">🎁 Mystery Box Paletty</div>
+            <div class="product-desc t-txt"
+              data-pl="Niespodzianka! Wartość towaru wielokrotnie przewyższa cenę zakupu. Wybierz kategorię:"
+              data-ru="Сюрприз! Стоимость товара многократно превышает цену покупки. Выбери категорию:"
+              data-en="Surprise! Value far exceeds the purchase price. Choose your category:">
+              Niespodzianka! Wartość towaru wielokrotnie przewyższa cenę zakupu. Wybierz kategorię:
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
+              <span
+                style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b045;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">🌿
+                Ogród</span>
+              <span
+                style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b045;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">🏠
+                Dom</span>
+              <span
+                style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b045;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">⚡
+                Elektronika</span>
+              <span
+                style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b045;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">📦
+                Inne</span>
+              <span
+                style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b045;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">💄
+                Kosmetyki</span>
+              <span
+                style="background:#e8ff0018;color:var(--accent);border:1px solid #e8ff0040;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700">🎲
+                Full Mix</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price t-txt" style="color:#ce93d8;font-size:16px" data-pl="Zapytaj!"
+                data-ru="Спросить!" data-en="Ask us!">Zapytaj!</div>
+              <div class="product-tags"><span class="ptag"
+                  style="background:#9c27b018;color:#ce93d8;border:1px solid #9c27b040">MIX</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
+    <section id="jak">
+      <div class="container">
+        <div class="section-label t-txt" data-pl="Proces" data-ru="Процесс" data-en="Process">Proces</div>
+        <h2 class="section-title t-txt" data-pl="Jak to działa?" data-ru="Как это работает?"
+          data-en="How does it work?">Jak to działa?</h2>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-title t-txt" data-pl="Wybierz palettę" data-ru="Выбери паллет" data-en="Choose a pallet">
+              Wybierz palettę</div>
+            <div class="step-body t-txt"
+              data-pl="Przeglądaj ofertę i wybierz interesującą Cię kategorię lub liczbę palet."
+              data-ru="Просмотри ассортимент и выбери интересующую категорию или количество паллет."
+              data-en="Browse the offer and choose the category or number of pallets that interest you.">
+              Przeglądaj ofertę i wybierz interesującą Cię kategorię lub liczbę palet.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-title t-txt" data-pl="Złóż zamówienie" data-ru="Оформи заказ" data-en="Place an order">Złóż
+              zamówienie</div>
+            <div class="step-body t-txt" data-pl="Wypełnij formularz lub zadzwoń. Odpiszemy w ciągu kilku godzin."
+              data-ru="Заполни форму или позвони. Мы ответим в течение нескольких часов."
+              data-en="Fill in the form or call us. We'll reply within a few hours.">
+              Wypełnij formularz lub zadzwoń. Odpiszemy w ciągu kilku godzin.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-title t-txt" data-pl="Ustalamy szczegóły" data-ru="Согласуем детали"
+              data-en="We agree on details">Ustalamy szczegóły</div>
+            <div class="step-body t-txt" data-pl="Potwierdzamy dostępność, cenę i termin odbioru."
+              data-ru="Подтверждаем наличие, цену и срок самовывоза."
+              data-en="We confirm availability, price and pickup schedule.">
+              Potwierdzamy dostępność, cenę i termin odbioru.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-title t-txt" data-pl="Odbierasz towar" data-ru="Получаешь товар"
+              data-en="Receive your goods">Odbierasz towar</div>
+            <div class="step-body t-txt" data-pl="Odbiór z magazynu. Hurtownicy: rabat 10% od 3 palet."
+              data-ru="Самовывоз со склада. Оптовики: скидка 10% от 3 паллет."
+              data-en="Pickup from warehouse. Wholesalers: 10% off for 3+ pallets.">
+              Odbiór z magazynu. Hurtownicy: rabat 10% od 3 palet.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="section-label t-txt" data-ru="Контакт" data-en="Contact" data-pl="Kontakt">Kontakt</div>
+      <h2 class="section-title t-txt" data-ru="Свяжитесь с нами" data-en="Get in touch" data-pl="Skontaktuj się z nami">
+        Skontaktuj się z nami</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="phone-block">
+            <div class="phone-lang">🇵🇱 Klienci polskojęzyczni</div>
+            <a href="tel:+48696526921" class="phone-num">+48 696 526 921</a>
+          </div>
+          <div class="phone-block">
+            <div class="phone-lang">🇺🇦/🇷🇺 Україна / Русскоязычные</div>
+            <a href="tel:+48793521345" class="phone-num">+48 793 521 345</a>
+          </div>
+          <div class="discount-box"><strong class="t-txt" data-ru="💼 Оптовая скидка 10%" data-en="💼 10% discount"
+              data-pl="💼 Rabat hurtowy 10%">💼 Rabat hurtowy 10%</strong></div>
+        </div>
+
+        <div id="zamow">
+          <form id="orderForm" class="native-form" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="order" />
+
+            <h3 class="t-txt" data-ru="Оформить заказ" data-en="Place order" data-pl="Złóż zamówienie">Złóż zamówienie
+            </h3>
+
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Imię / Имя / Name" required>
+            </div>
+
+            <div class="form-group">
+              <input type="tel" id="f_phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+              <select name="pallet" required>
+                <option value="" disabled selected class="t-txt" data-pl="Wybierz paletę" data-ru="Выберите паллету"
+                  data-en="Choose pallet">Wybierz paletę</option>
+                <option value="Ogród">Ogród (1 000 zł)</option>
+                <option value="Dom">Dom (1 400 zł)</option>
+                <option value="Elektronika">Elektronika (1 800 zł)</option>
+                <option value="Mystery">🎁 Mystery Box</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <textarea name="message" rows="3" placeholder="Wiadomość / Сообщение"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary t-txt" style="width:100%; border:none;" data-ru="Отправить"
+              data-pl="Wyślij" data-en="Send order">Wyślij zamówienie</button>
+
+            <div id="formResult" style="margin-top: 15px; font-size: 13px; text-align: center;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="logo">AMAZON<span>PALETTY</span></div>
+      <div class="t-txt" data-ru="Опт паллет Amazon — Польша" data-pl="Hurt palet Amazon — Polska">Hurt palet Amazon —
+        Polska</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/js/intlTelInput.min.js"></script>
+
+  <script>
+    // --- 1. ПЕРЕМЕННЫЕ И НАВИГАЦИЯ ---
+    let lastScroll = 0;
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.getElementById('nav-links');
+
+    window.addEventListener('scroll', () => {
+      let current = window.pageYOffset;
+      if (current > lastScroll && current > 80 && !navLinks.classList.contains('active')) {
+        navbar.classList.add('nav-hidden');
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
+      lastScroll = current;
+    });
+
+    function toggleMenu() {
+      navLinks.classList.toggle('active');
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('active');
+      document.querySelector('.hamburger').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // --- 2. ИНИЦИАЛИЗАЦИЯ ТЕЛЕФОННОЙ МАСКИ ---
+    const phoneInput = document.querySelector("#f_phone");
+    let iti;
+
+    if (phoneInput) {
+      iti = window.intlTelInput(phoneInput, {
+        initialCountry: "pl",
+        preferredCountries: ["pl", "ua", "de", "lt"],
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/js/utils.js"
+      });
+    }
+
+    // --- 3. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ---
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.t-txt, .t-nav').forEach(el => {
+        const newText = el.getAttribute(`data-${lang}`);
+        if (newText) {
+          el.textContent = newText;
+        }
+      });
+
+      buildTicker(lang);
+    }
+
+    // --- 4. БЕГУЩАЯ СТРОКА ---
+    const proofEvents = [
+      {
+        pl: 'Klient zamówił <strong>Mystery Box</strong>',
+        ru: 'Заказан <strong>Mystery Box</strong>',
+        en: 'Ordered a <strong>Mystery Box</strong>'
+      },
+      {
+        pl: 'Nowa dostawa <strong>dostępna!</strong>',
+        ru: 'Новая поставка <strong>на складе!</strong>',
+        en: 'New delivery <strong>available!</strong>'
+      }
+    ];
+
+    function buildTicker(lang) {
+      const ticker = document.getElementById('proof-ticker');
+      if (!ticker) return;
+
+      // Генерируем элементы
+      const itemsHtml = [...proofEvents, ...proofEvents, ...proofEvents].map(e => `
+        <span class="proof-item"><span class="dot"></span>${e[lang] || e.pl}</span>
+      `).join('');
+
+      // Вставляем два идентичных трека для бесконечного бесшовного цикла
+      ticker.innerHTML = `
+        <div class="proof-track">${itemsHtml}</div>
+        <div class="proof-track">${itemsHtml}</div>
+      `;
+    }
+
+    // --- 5. ЖИВОЙ СЧЕТЧИК ПОСЕТИТЕЛЕЙ ---
+    let liveVisitors = 14;
+    setInterval(() => {
+      liveVisitors = Math.max(4, Math.min(31, liveVisitors + Math.floor(Math.random() * 5) - 2));
+      const el = document.getElementById('live-count');
+      if (el) el.textContent = liveVisitors;
+    }, 6000);
+
+    // --- 6. ЛОГОТИП (SVG) ---
+    const cleanLogoSVG = `<svg viewBox="0 0 120 36" fill="none"><text x="4" y="20" font-family="Arial" font-weight="900" font-size="19" fill="white">amazon</text><path d="M6 28 Q60 42 114 28" stroke="#e8ff00" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M103 22 L114 28 L103 34" stroke="#e8ff00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    document.querySelectorAll('.amazon-logo-overlay').forEach(el => el.innerHTML = cleanLogoSVG);
+
+    // --- 7. ОТПРАВКА ФОРМЫ НА NETLIFY ---
+    const orderForm = document.getElementById('orderForm');
+    const formResult = document.getElementById('formResult');
+
+    if (orderForm) {
+      orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(orderForm);
+
+        if (iti) {
+          formData.set('phone', iti.getNumber());
+        }
+
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        })
+          .then(() => {
+            formResult.style.color = "var(--accent)";
+            formResult.textContent = document.documentElement.lang === 'ru'
+              ? "Спасибо! Заказ отправлен."
+              : document.documentElement.lang === 'en'
+                ? "Thank you! Order sent."
+                : "Dziękujemy! Zamówienie zostało wysłane.";
+            orderForm.reset();
+          })
+          .catch((error) => {
+            formResult.style.color = "#ff4d4d";
+            formResult.textContent = "Error: " + error;
+          });
+      });
+    }
+
+    setLang('pl');
+  </script>
+</body>
+
+</html>
