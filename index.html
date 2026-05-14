@@ -370,22 +370,6 @@
       animation: ticker 15s linear infinite;
     }
 
-    /* TICKER */
-    .proof-bar {
-      background: #111;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      height: 36px;
-      display: flex;
-      align-items: center;
-    }
-
-    .proof-inner {
-      display: flex;
-      width: max-content;
-      animation: ticker 15s linear infinite;
-    }
-
     .proof-track {
       display: flex;
       align-items: center;
@@ -433,8 +417,6 @@
         transform: scale(0.7);
       }
     }
-
-
 
 
     /* SECTION */
@@ -794,9 +776,7 @@
         position: fixed;
         top: 0;
         right: -100%;
-        /* Заменили 100vw на 100%, чтобы не было сдвига */
         width: 100%;
-        /* Заменили 100vw на 100% */
         height: 100vh;
         background: var(--bg);
         flex-direction: column;
@@ -806,7 +786,6 @@
         transition: right 0.4s;
         z-index: 2000;
         padding: 0;
-        /* Жестко обнулили паддинги, которые толкали блок */
       }
 
       .nav-links.active {
@@ -839,7 +818,6 @@
         opacity: 0.5;
         font-weight: 400 !important;
       }
-
 
       /* Показываем подвал меню с языками и телефонами */
       .mobile-menu-footer {
@@ -1356,9 +1334,7 @@
         </div>
 
         <div id="zamow">
-          <form id="orderForm" class="native-form" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="order" />
-
+          <form id="orderForm" class="native-form">
             <h3 class="t-txt" data-ru="Оформить заказ" data-en="Place order" data-pl="Złóż zamówienie">Złóż zamówienie
             </h3>
 
@@ -1388,7 +1364,7 @@
             <button type="submit" class="btn-primary t-txt" style="width:100%; border:none;" data-ru="Отправить"
               data-pl="Wyślij" data-en="Send order">Wyślij zamówienie</button>
 
-            <div id="formResult" style="margin-top: 15px; font-size: 13px; text-align: center;"></div>
+            <div id="formResult" style="margin-top: 15px; font-size: 13px; text-align: center; font-weight: 700;"></div>
           </form>
         </div>
       </div>
@@ -1486,12 +1462,10 @@
       const ticker = document.getElementById('proof-ticker');
       if (!ticker) return;
 
-      // Генерируем элементы
       const itemsHtml = [...proofEvents, ...proofEvents, ...proofEvents].map(e => `
         <span class="proof-item"><span class="dot"></span>${e[lang] || e.pl}</span>
       `).join('');
 
-      // Вставляем два идентичных трека для бесконечного бесшовного цикла
       ticker.innerHTML = `
         <div class="proof-track">${itemsHtml}</div>
         <div class="proof-track">${itemsHtml}</div>
@@ -1510,38 +1484,83 @@
     const cleanLogoSVG = `<svg viewBox="0 0 120 36" fill="none"><text x="4" y="20" font-family="Arial" font-weight="900" font-size="19" fill="white">amazon</text><path d="M6 28 Q60 42 114 28" stroke="#e8ff00" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M103 22 L114 28 L103 34" stroke="#e8ff00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     document.querySelectorAll('.amazon-logo-overlay').forEach(el => el.innerHTML = cleanLogoSVG);
 
-    // --- 7. ОТПРАВКА ФОРМЫ НА NETLIFY ---
+    // --- 7. ОТПРАВКА ФОРМЫ (TELEGRAM + EMAIL) ---
     const orderForm = document.getElementById('orderForm');
     const formResult = document.getElementById('formResult');
 
+    // === ТВОИ НАСТРОЙКИ (ЗАПОЛНИ ПЕРЕД ЗАГРУЗКОЙ) ===
+    const TG_BOT_TOKEN = '8643346420:AAG9XIO_t6yQ88ZZr-UPJyBqL5J4LXJbH5s'; // Пример: '123456789:ABCdefGHIjklmNOPqrsTUVwxyz'
+    const TG_CHAT_ID = '-5139756794'; // Пример: '-100123456789'
+    const CLIENT_EMAIL = 'Ermermerm09@gmail.com'; // Почта клиентки
+    // ================================================
+
     if (orderForm) {
-      orderForm.addEventListener('submit', (e) => {
+      orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        formResult.style.color = "var(--text)";
+        formResult.textContent = document.documentElement.lang === 'ru' 
+          ? "Отправка..." 
+          : (document.documentElement.lang === 'en' ? "Sending..." : "Wysyłanie...");
 
         const formData = new FormData(orderForm);
-
-        if (iti) {
+        
+        if (typeof iti !== 'undefined') {
           formData.set('phone', iti.getNumber());
         }
 
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString(),
-        })
-          .then(() => {
-            formResult.style.color = "var(--accent)";
-            formResult.textContent = document.documentElement.lang === 'ru'
-              ? "Спасибо! Заказ отправлен."
-              : document.documentElement.lang === 'en'
-                ? "Thank you! Order sent."
-                : "Dziękujemy! Zamówienie zostało wysłane.";
-            orderForm.reset();
-          })
-          .catch((error) => {
-            formResult.style.color = "#ff4d4d";
-            formResult.textContent = "Error: " + error;
+        const name = formData.get('name');
+        const phone = formData.get('phone');
+        const pallet = formData.get('pallet') || 'Nie wybrano / Не выбрано';
+        const message = formData.get('message') || 'Brak / Нет';
+
+        const tgMessage = `📦 <b>Nowe zamówienie / Новый заказ!</b>\n\n👤 <b>Imię:</b> ${name}\n📞 <b>Telefon:</b> ${phone}\n🛒 <b>Paleta:</b> ${pallet}\n💬 <b>Wiadomość:</b> ${message}`;
+
+        try {
+          // Отправка в TG
+          const tgResponse = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: TG_CHAT_ID,
+              text: tgMessage,
+              parse_mode: 'HTML'
+            })
           });
+
+          // Дублирование на почту
+          const emailResponse = await fetch(`https://formsubmit.co/ajax/${CLIENT_EMAIL}`, {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                _subject: "🛒 Nowe zamówienie - PaletyMix",
+                Imię: name,
+                Telefon: phone,
+                Paleta: pallet,
+                Wiadomość: message
+            })
+          });
+
+          if (tgResponse.ok && emailResponse.ok) {
+            formResult.style.color = "var(--accent)";
+            formResult.textContent = document.documentElement.lang === 'ru' 
+              ? "✅ Спасибо! Заказ отправлен." 
+              : (document.documentElement.lang === 'en' ? "✅ Thank you! Order sent." : "✅ Dziękujemy! Zamówienie zostało wysłane.");
+            orderForm.reset();
+          } else {
+            throw new Error("Server error");
+          }
+
+        } catch (error) {
+          console.error(error);
+          formResult.style.color = "#ff4d4d";
+          formResult.textContent = document.documentElement.lang === 'ru' 
+            ? "❌ Ошибка отправки." 
+            : (document.documentElement.lang === 'en' ? "❌ Send error." : "❌ Błąd wysyłania.");
+        }
       });
     }
 
