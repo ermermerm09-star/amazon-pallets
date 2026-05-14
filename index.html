@@ -7,7 +7,7 @@
 
   <title>Paletty Amazon, Zwroty Konsumenckie i Mix Paletty Hurt | Kategoria A, B, C</title>
   <meta name="description"
-    content="Bezpośredni importer palet Amazon w Polsce. Zwроty konsumenckie (kategoria A/B/C), mix palety, elektronika, dom i ogród, Mystery Box. Hurt i detal. Nowe dostawy co tydzień!">
+    content="Bezpośredni importer palet Amazon w Polsce. Zwroty konsumenckie (kategoria A/B/C), mix palety, elektronika, dom i ogród, Mystery Box. Hurt i detal. Nowe dostawy co tydzień!">
   <meta name="keywords"
     content="palety amazon, zwroty konsumenckie, likwidacje amazon, nadwyżki magazynowe, hurtownia palet amazon, mystery box amazon, kategoria A B C, palety mix">
 
@@ -1343,7 +1343,7 @@
             </div>
 
             <div class="form-group">
-              <input type="tel" id="f_phone" name="phone" maxlength="16" required>
+              <input type="tel" id="f_phone" name="phone" required>
             </div>
 
             <div class="form-group">
@@ -1422,6 +1422,15 @@
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/js/utils.js"
       });
+
+      const updateMaxLength = () => {
+        const placeholder = phoneInput.getAttribute('placeholder') || '';
+        const maxLen = placeholder.length > 0 ? placeholder.length + 2 : 15;
+        phoneInput.setAttribute('maxlength', maxLen);
+      };
+
+      phoneInput.addEventListener('countrychange', updateMaxLength);
+      setTimeout(updateMaxLength, 500);
     }
 
     // --- 3. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ---
@@ -1491,15 +1500,25 @@
     const formResult = document.getElementById('formResult');
 
     // === ТВОИ НАСТРОЙКИ (ЗАПОЛНИ ПЕРЕД ЗАГРУЗКОЙ) ===
-    const TG_BOT_TOKEN = '8643346420:AAG9XIO_t6yQ88ZZr-UPJyBqL5J4LXJbH5s'; // Пример: '123456789:ABCdefGHIjklmNOPqrsTUVwxyz'
-    const TG_CHAT_ID = '-5139756794'; // Пример: '-100123456789'
-    const CLIENT_EMAIL = 'Ermermerm09@gmail.com'; // Почта клиентки
+   const TG_BOT_TOKEN = '8643346420:AAG9XIO_t6yQ88ZZr-UPJyBqL5J4LXJbH5s'; // Пример: '123456789:ABCdefGHIjklmNOPqrsTUVwxyz'
+   const TG_CHAT_ID = '-5139756794'; // Пример: '-100123456789'
+   const CLIENT_EMAIL = 'Ermermerm09@gmail.com'; // Почта клиентки
     // ================================================
 
     if (orderForm) {
       orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        if (typeof iti !== 'undefined') {
+          if (!iti.isValidNumber()) {
+            formResult.style.color = "#ff4d4d";
+            formResult.textContent = document.documentElement.lang === 'ru' 
+              ? "❌ Неверный номер телефона" 
+              : (document.documentElement.lang === 'en' ? "❌ Invalid phone number" : "❌ Nieprawidłowy numer telefonu");
+            return;
+          }
+        }
+
         formResult.style.color = "var(--text)";
         formResult.textContent = document.documentElement.lang === 'ru' 
           ? "Отправка..." 
