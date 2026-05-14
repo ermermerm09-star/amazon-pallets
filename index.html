@@ -1420,11 +1420,26 @@
         initialCountry: "pl",
         preferredCountries: ["pl", "ua", "de", "lt"],
         separateDialCode: true,
-        strictMode: true, // Включаем жесткую встроенную фильтрацию ввода по длине и символам
+        strictMode: true,
+        formatAsYouType: true, // Включаем нативное автоформатирование
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/js/utils.js"
       });
-    }
 
+      // Принудительно расставляем пробелы в стиле плейсхолдера при каждом вводе
+      phoneInput.addEventListener('input', function() {
+        // Убеждаемся, что библиотека utils.js успела загрузиться
+        if (typeof window.intlTelInputUtils !== 'undefined') {
+          // Получаем ISO-код текущей выбранной страны (например, "pl")
+          const currentIso = iti.getSelectedCountryData().iso2;
+          
+          // Вытаскиваем из инпута только чистые цифры, отсекая всё лишнее
+          const cleanDigits = this.value.replace(/\D/g, '');
+          
+          // Прогоняем цифры через форматтер NATIONAL (локальный формат с пробелами)
+          this.value = window.intlTelInputUtils.formatNumber(cleanDigits, currentIso, window.intlTelInputUtils.numberFormat.NATIONAL);
+        }
+      });
+    }
     // --- 3. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ---
     function setLang(lang) {
       document.documentElement.lang = lang;
