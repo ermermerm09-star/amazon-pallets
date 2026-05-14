@@ -1411,7 +1411,7 @@
       document.body.style.overflow = '';
     }
 
-    // --- 2. ИНИЦИАЛИЗАЦИЯ ТЕЛЕФОННОЙ МАСКИ ---
+// --- 2. ИНИЦИАЛИЗАЦИЯ ТЕЛЕФОННОЙ МАСКИ ---
     const phoneInput = document.querySelector("#f_phone");
     let iti;
 
@@ -1420,17 +1420,9 @@
         initialCountry: "pl",
         preferredCountries: ["pl", "ua", "de", "lt"],
         separateDialCode: true,
+        strictMode: true, // Включаем жесткую встроенную фильтрацию ввода по длине и символам
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.3.4/build/js/utils.js"
       });
-
-      const updateMaxLength = () => {
-        const placeholder = phoneInput.getAttribute('placeholder') || '';
-        const maxLen = placeholder.length > 0 ? placeholder.length + 2 : 15;
-        phoneInput.setAttribute('maxlength', maxLen);
-      };
-
-      phoneInput.addEventListener('countrychange', updateMaxLength);
-      setTimeout(updateMaxLength, 500);
     }
 
     // --- 3. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ---
