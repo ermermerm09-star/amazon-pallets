@@ -1343,17 +1343,19 @@
             </div>
 
             <div class="form-group">
-              <input type="tel" id="f_phone" name="phone" required>
+              <input type="tel" id="f_phone" name="phone" maxlength="16" required>
             </div>
 
             <div class="form-group">
               <select name="pallet" required>
-                <option value="" disabled selected class="t-txt" data-pl="Wybierz paletę" data-ru="Выберите паллету"
-                  data-en="Choose pallet">Wybierz paletę</option>
-                <option value="Ogród">Ogród (1 000 zł)</option>
-                <option value="Dom">Dom (1 400 zł)</option>
-                <option value="Elektronika">Elektronika (1 800 zł)</option>
-                <option value="Mystery">🎁 Mystery Box</option>
+                <option value="" disabled selected class="t-txt" data-pl="Wybierz paletę" data-ru="Выберите паллету" data-en="Choose pallet">Wybierz paletę</option>
+                <option value="Ogród" class="t-txt" data-pl="Ogród (1 000 zł)" data-ru="Сад (1 000 PLN)" data-en="Garden (€230)">Ogród (1 000 zł)</option>
+                <option value="Dom" class="t-txt" data-pl="Dom (1 400 zł)" data-ru="Дом (1 400 PLN)" data-en="Home (€325)">Dom (1 400 zł)</option>
+                <option value="Elektronika" class="t-txt" data-pl="Elektronika (1 800 zł)" data-ru="Электроника (1 800 PLN)" data-en="Electronics (€415)">Elektronika (1 800 zł)</option>
+                <option value="Inne" class="t-txt" data-pl="Inne kategorie (MIX)" data-ru="Другие категории (МИКС)" data-en="Other categories (MIX)">Inne kategorie (MIX)</option>
+                <option value="Zwroty" class="t-txt" data-pl="Zwroty Amazon" data-ru="Amazon Возвраты" data-en="Amazon Returns">Zwroty Amazon</option>
+                <option value="Kosmetyki" class="t-txt" data-pl="Kosmetyki / Chemia" data-ru="Косметика / Химия" data-en="Cosmetics / Cleaning">Kosmetyki / Chemia</option>
+                <option value="Mystery" class="t-txt" data-pl="🎁 Mystery Box" data-ru="🎁 Mystery Box" data-en="🎁 Mystery Box">🎁 Mystery Box</option>
               </select>
             </div>
 
@@ -1489,9 +1491,9 @@
     const formResult = document.getElementById('formResult');
 
     // === ТВОИ НАСТРОЙКИ (ЗАПОЛНИ ПЕРЕД ЗАГРУЗКОЙ) ===
-    const TG_BOT_TOKEN = '8643346420:AAG9XIO_t6yQ88ZZr-UPJyBqL5J4LXJbH5s'; // Пример: '123456789:ABCdefGHIjklmNOPqrsTUVwxyz'
-    const TG_CHAT_ID = '-5139756794'; // Пример: '-100123456789'
-    const CLIENT_EMAIL = 'Ermermerm09@gmail.com'; // Почта клиентки
+    const TG_BOT_TOKEN = 'ТВОЙ_ТОКЕН'; // Пример: '123456789:ABCdefGHIjklmNOPqrsTUVwxyz'
+    const TG_CHAT_ID = 'ТВОЙ_CHAT_ID'; // Пример: '-100123456789'
+    const CLIENT_EMAIL = 'pochta@klienta.com'; // Почта клиентки
     // ================================================
 
     if (orderForm) {
